@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import AddAdminForm from "./Components/Forms/AddAdminForm/AddAdminForm";
+import ErrorModal from "./Components/Modals/ErrorModal";
+import AuthProvider from "./Context/AuthProvider/AuthProvider";
+import BookService from "./Pages/BookService/BookService";
+import DashBoardRoot from "./Pages/DashBoard/DashBoardRoot/DashBoardRoot";
+import Home from "./Pages/Home/Home/Home";
+import LoginRegisterRoot from "./Pages/LoginRegister/LoginRegisterRoot/LoginRegisterRoot";
+import PrivateOutlet from "./Pages/LoginRegister/PrivateOutlet/PrivateOutlet";
+import NotFound from "./Pages/NotFound/NotFound";
+import Footer from "./Pages/Shared/Footer/Footer";
+import Navbar from "./Pages/Shared/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Navbar />
+      <ErrorModal />
+      <div className="dark:bg-gray-200 bg-opacity-5">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<LoginRegisterRoot />} />
+          <Route path="/*" element={<PrivateOutlet />}>
+            <Route path="bookservice/:serviceId" element={<BookService />} />
+            <Route path="dashboard/*" element={<DashBoardRoot />} />
+          </Route>
+          <Route path="/admin/*" element={<AddAdminForm />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+    </AuthProvider>
   );
 }
 
