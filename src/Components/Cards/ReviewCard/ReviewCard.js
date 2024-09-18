@@ -1,8 +1,8 @@
-const ReviewCard = (props: any) => {
+const ReviewCard = (props) => {
   const { name, image, email, details, rate } = props.review;
 
-  var rating = [];
-  for (var i = 0; i < rate; i++) {
+  const rating = [];
+  for (let i = 0; i < rate; i++) {
     rating.push(i);
   }
 
@@ -13,7 +13,7 @@ const ReviewCard = (props: any) => {
           <img
             alt="profil"
             src={image}
-            className="mx-auto object-cover rounded-full h-16 w-16 "
+            className="mx-auto object-cover rounded-full h-16 w-16"
           />
         </div>
         <div className="">

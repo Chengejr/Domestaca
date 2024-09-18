@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SmallServiceCard = ({ serviceDetails, setOpen, setRemoveId }: any) => {
+const SmallServiceCard = ({ serviceDetails, setOpen, setRemoveId }) => {
   return (
     <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto border-2 p-1 border-gray-200">
       <div className="flex flex-row items-start gap-4">
