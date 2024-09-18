@@ -1,5 +1,8 @@
-export type TodoContextType = {
-  todos: ITodo[];
-  saveTodo: (todo: ITodo) => void;
-  updateTodo: (id: number) => void;
-};
+// firebasetypes.d.ts
+declare module 'my-custom-types' {
+  export interface ITodo {
+    id: number;
+    text: string;
+    completed: boolean;
+  }
+}
